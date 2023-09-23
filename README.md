@@ -5,6 +5,7 @@
 - Support of Both Text and Slash Commands
 - Individual Command and Event Files
 - Up To Date with the Discord.JS NPM Module
+- Advanced and Ready help command
   > To Change The Bot's Prefix:
 - Go To `src/Structures/Client.js`
 - On Line 12 (`this.textCommandsPrefix = "!";`) replace `!` with your desired prefix
