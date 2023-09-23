@@ -17,17 +17,21 @@ module.exports = {
       .slice(message.client.textCommandsPrefix.length)
       .split(/ +/);
     let command = message.client.Commands.get(args[0]);
-    if (command.data.commandType.toLowerCase() == "slash") {
-      let errorEmbed = new EmbedBuilder()
-        .setTitle("Error!")
-        .setColor("Red")
-        .addFields({
-          name: "Wrong Command Type!",
-          value: "This Command is a slash only command!",
-        });
+    let errorEmbed = new EmbedBuilder().setTitle("Error!").setColor("Red");
+    if (command && command.data.commandType.toLowerCase() == "slash") {
+      errorEmbed.addFields({
+        name: "Wrong Command Type!",
+        value: "This Command is a slash only command!",
+      });
       await message.reply({ embeds: [errorEmbed] });
-    } else {
-      await command.execute(message, args);
+    } else if (command) {
+      try {
+        await command.execute(message, args);
+      } catch (error) {
+        errorEmbed.addFields({ name: "An Error Occured!", value: `${error}` });
+
+        await message.reply({ embeds: [errorEmbed] });
+      }
     }
   },
 };
