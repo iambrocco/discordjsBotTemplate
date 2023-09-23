@@ -16,7 +16,7 @@
 
 - `git clone https://github.com/iambrocco/discordjsBotTemplate.git`
 - `npm install`
-- create a file called .env and insert the following
+- create a file in the project's root called .env and insert the following
 
 ```env
 clientId=YOURCLIENTID
