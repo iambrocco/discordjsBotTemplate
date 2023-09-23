@@ -46,3 +46,26 @@ module.exports = {
   },
 };
 ```
+
+## To Create an Event:
+
+- Head over to `src/Events`
+- Create a file `ready.js`
+- Use this code template
+
+```js
+const Client = require("../Structures/Client");
+
+module.exports = {
+  name: "ready",
+  once: true,
+
+  /**
+   *
+   * @param {Client} client
+   */
+  async execute(client) {
+    console.log(`${client.user.tag} is now ready!`)
+  },
+};
+```
