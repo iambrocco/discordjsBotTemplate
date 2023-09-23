@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1"
+  },
+  "name": "discordjsbottemplate",
+  "version": "1.0.0",
+  "description": "Discord Bot Template Made by IamBrocco",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "DiscordBot",
+    "discordjs",
+    "discord.js",
+    "DiscordJsBot"
+  ],
+  "author": "@iambrocco",
+  "license": "MIT",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iambrocco/discordjsBotTemplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iambrocco/discordjsBotTemplate/issues"
+  },
+  "homepage": "https://github.com/iambrocco/discordjsBotTemplate#readme"
+}
