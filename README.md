@@ -16,7 +16,7 @@
 
 - `git clone https://github.com/iambrocco/discordjsBotTemplate.git`
 - `npm install`
-- create a file in the project's root called .env and insert the following
+- Create a file in the project's root called .env and insert the following
 
 ```env
 clientId=YOUR_BOT_CLIENTID
@@ -24,9 +24,8 @@ token=YOUR_BOT_TOKEN
 ```
 - After you've done that, you can now run `npm run test` to run and debug your code
 - And `npm run start` to start and host your code
-- If you're using the default `intents` variable in `src/index.js`, make sure to enable these at
-https://discord.com/developers/applications/YOUR_CLIENT_ID/bot
-![intents](https://github.com/iambrocco/discordjsBotTemplate/blob/main/Assets/intents.png?raw=true)
+- If you're using the default `intents` variable in `src/index.js`, make sure to enable the options in the picture below at https://discord.com/developers/applications/YOUR_CLIENT_ID/bot
+> ![intents](https://github.com/iambrocco/discordjsBotTemplate/blob/main/Assets/intents.png?raw=true)
 
 ## To Create a Command:
 
