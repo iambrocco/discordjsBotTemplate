@@ -25,7 +25,7 @@ token=YOUR_BOT_TOKEN
 - After you've done that, you can now run `npm run test` to run and debug your code
 - And `npm run start` to start and host your code
 - If you're using the default `intents` variable in `src/index.js`, make sure to enable these at
-`https://discord.com/developers/applications/YOUR_CLIENT_ID/bot`
+https://discord.com/developers/applications/YOUR_CLIENT_ID/bot
 ![intents](https://github.com/iambrocco/discordjsBotTemplate/blob/main/Assets/intents.png?raw=true)
 
 ## To Create a Command:
@@ -43,7 +43,7 @@ module.exports = {
     .setDescription("Test Command") // The Command's Description, case-insensitive.
     .setCategory("Testing") // DEFAULT VALUE: "Uncategorized"; The Command's Category, Used for sorting in the built-in help command
     .addAliases("test", "botstat") // DEFAULT VALUE: ["commandName"]; Other execution names for the command, ONLY WORKS WITH TEXT COMMANDS
-    .isThisCommandSecret(true) // DEFAULT VALUE: false; "Is this command hidden from the built-in help command?". To make the command really hidden, I advice you to make it a "TEXT" type command
+    .isThisCommandSecret(true) // DEFAULT VALUE: false; "Is this command hidden from the built-in help command?". To make the command really hidden, I advise you to make it a "TEXT" type command
     .setType("BOTH"), // DEFAULT VALUE: "SLASH"; Can be "TEXT" or "SLASH" or "BOTH"
   /**
    *
