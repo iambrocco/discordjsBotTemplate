@@ -1,4 +1,5 @@
-const {EmbedBuilder} = require("discord.js")
+const ErrorEmbed = require("../Structures/ErrorEmbed.js");
+
 module.exports = {
   name: "interactionCreate",
   /**
@@ -7,17 +8,20 @@ module.exports = {
    */
   async execute(interaction) {
     let command = interaction.client.Commands.get(interaction.commandName);
+    let errorEmbed = new ErrorEmbed();
     if (command.data.commandType.toLowerCase() == "text") {
-      let errorEmbed = new EmbedBuilder()
-        .setTitle("Error!")
-        .setColor("Red")
-        .addFields({
-          name: "Wrong Command Type!",
-          value: "This Command is a text only command!",
-        });
+      errorEmbed.setError({
+        name: "Wrong Command Type!",
+        value: "This Command is a text only command!",
+      });
       await interaction.reply({ embeds: [errorEmbed] });
     } else {
-      await command.execute(interaction);
+      try {
+        await command.execute(interaction);
+      } catch (error) {
+        errorEmbed.setError({name: "Failed To Execute Command!", value: `Error: ${error}`})
+        interaction.reply({embeds: [errorEmbed]})
+      }
     }
   },
 };

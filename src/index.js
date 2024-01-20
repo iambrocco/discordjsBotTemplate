@@ -1,5 +1,14 @@
-require("dotenv").config()
-const Client = require("./Structures/Client")
-const client = new Client({intents: ["GuildMessages", "GuildMembers", "MessageContent", "Guilds"]})
+require("dotenv").config();
+const { GatewayIntentBits } = require("discord.js");
+const Client = require("./Structures/Client");
 
-client.start(process.env.token)
+let intents = [
+  GatewayIntentBits.GuildMembers,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.MessageContent,
+];
+
+const client = new Client({ intents: intents });
+
+client.start(process.env.token);

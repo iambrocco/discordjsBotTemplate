@@ -1,4 +1,5 @@
-const { Message, EmbedBuilder } = require("discord.js");
+const { Message, MessageEmbed } = require("discord.js");
+const ErrorEmbed = require("../Structures/ErrorEmbed");
 
 module.exports = {
   name: "messageCreate",
@@ -7,30 +8,53 @@ module.exports = {
    * @param {Message} message
    */
   async execute(message) {
+    let errorEmbed = new ErrorEmbed();
     if (
-      !message.content.startsWith(message.client.textCommandsPrefix) ||
-      message.author.bot
+      message.author.bot ||
+      !message.content
+        .toLowerCase()
+        .startsWith(message.client.prefix.toLowerCase())
     )
       return;
+
+    let client = message.client;
+
     let args = message.content
       .toLowerCase()
-      .slice(message.client.textCommandsPrefix.length)
+      .slice(message.client.prefix.length)
       .split(/ +/);
-    let command = message.client.Commands.get(args[0]);
-    let errorEmbed = new EmbedBuilder().setTitle("Error!").setColor("Red");
+
+    let command = null;
+
+    // Check if the command or alias is in commandAliases
+    for (const [commandName, aliases] of client.commandAliases.entries()) {
+      if (aliases.includes(args[0].toLowerCase())) {
+        // Set the command to the parent command
+        command = client.Commands.get(commandName.toLowerCase());
+        break; // Stop the loop if an alias is found
+      }
+    }
+
+    // If no alias is found, try to get the command directly
+    if (!command) {
+      command = client.Commands.get(args[0].toLowerCase());
+    }
+
     if (command && command.data.commandType.toLowerCase() == "slash") {
-      errorEmbed.addFields({
+      errorEmbed.setError({
         name: "Wrong Command Type!",
         value: "This Command is a slash only command!",
       });
       await message.reply({ embeds: [errorEmbed] });
     } else if (command) {
       try {
-        await command.execute(message, args);
+        await command.execute(interaction);
       } catch (error) {
-        errorEmbed.addFields({ name: "An Error Occured!", value: `${error}` });
-
-        await message.reply({ embeds: [errorEmbed] });
+        errorEmbed.setError({
+          name: "Failed To Execute Command!",
+          value: `Error: ${error}`,
+        });
+        interaction.reply({ embeds: [errorEmbed] });
       }
     }
   },

@@ -4,11 +4,12 @@
     "dotenv": "^16.3.1"
   },
   "name": "discordjsbottemplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discord Bot Template Made by IamBrocco",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "test": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [
     "Discord",

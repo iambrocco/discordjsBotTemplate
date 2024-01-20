@@ -9,6 +9,7 @@ class Client extends discord.Client {
   constructor(options) {
     super(options);
     this.Commands = new Map();
+    this.commandAliases = new Map();
     this.textCommandsPrefix = "!";
   }
   loadFunctionFiles(type) {

@@ -1,4 +1,4 @@
-const { EmbedBuilder, Colors } = require("discord.js");
+const { EmbedBuilder, Colors, codeBlock } = require("discord.js");
 const CommandBuilder = require("../Structures/CommandBuilder");
 module.exports = {
   data: new CommandBuilder()
@@ -82,6 +82,14 @@ module.exports = {
           });
         });
       }
+      let aliasesString = '';
+      for (let aliasesAdded = 0; aliasesAdded < subcommand.data.aliases.length; aliasesAdded++) {
+        aliasesAdded < subcommand.data.aliases.length - 1 ? aliasesString += `${subcommand.data.aliases[aliasesAdded]}, ` : aliasesString += `${subcommand.data.aliases[aliasesAdded]}`
+      }
+      specificHelpEmbed.addFields({
+        name: "Command Type",
+        value: `${codeBlock(subcommand.data.commandType)}`,
+      }, {name: 'Command Aliases', value: `${codeBlock(aliasesString)}`});
 
       await interaction.reply({ embeds: [specificHelpEmbed] });
     }
