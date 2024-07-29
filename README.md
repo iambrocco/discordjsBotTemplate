@@ -29,6 +29,14 @@ token=YOUR_BOT_TOKEN
 
 ## To Create a Command:
 
+### There Are Two Methods To Create Commands:
+
+#### 1. Using CLI createCommand
+- Start your terminal and type `npm run createCommand`
+- Submit Your Answers
+- Head Over to `src/Commands/your_command_name.js` and add your command functionality
+
+#### 2. Manually Creating Files
 - Head over to `src/Commands`
 - Create a file `ping.js`
 - Use this code template
