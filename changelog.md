@@ -1,7 +1,7 @@
 # Version 1.0.2
 
 ### Added CLI Command Maker
-_ run `npm run createCommand` to Automatically create a command file with the provided answers
+- run `npm run createCommand` to Automatically create a command file with the provided answers
 
 
 # Version 1.0.1
